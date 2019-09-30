@@ -79,6 +79,25 @@ def L(p, f):
     return inductance*1j*omega
 
 
+def M(p, f):
+    """ defines a modified inductor
+
+    .. math::
+
+        Z = (L \\times j 2 \\pi f)^\\alpha}
+
+     where :math:`L` = p[0] and :math:`\\alpha` = p[1].
+
+     """
+
+    typeChecker(p, f, M.__name__, 2)
+    omega = 2*np.pi*np.array(f)
+    inductance = p[0]
+    alpha = p[1]
+
+    return (inductance*1j*omega)**alpha
+
+
 def W(p, f):
     """ defines a blocked boundary Finite-length Warburg Element
 
