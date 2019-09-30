@@ -229,7 +229,7 @@ def buildCircuit(circuit, frequencies, *parameters, eval_string='', index=0):
 
 
 def calculateCircuitLength(circuit):
-    l1 = ['R', 'E', 'W', 'C', 'L', 'A', 'G']
+    l1 = ['R', 'E', 'W', 'C', 'L', 'M', 'A', 'G']
     length = 0
     for char in l1:
         length += circuit.count(char)
