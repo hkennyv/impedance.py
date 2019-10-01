@@ -1,10 +1,10 @@
-from impedance.circuit_elements import R, C, W, A, E, G, s, p
+from impedance.circuit_elements import R, C, W, A, E, G, M, s, p
 import cmath
 import numpy as np
 
 
 def test_all():
-    funcs = [R, C, W, A, E, G]
+    funcs = [R, C, W, A, E, G, M]
     freqs = [0.001, 1.0, 1000]
     correct_vals = [[0.1, 0.1, 0.1],
                     [-1591.5494309189532j,
@@ -21,9 +21,12 @@ def test_all():
                      (1.6541327179718126-0.537460300252313j)],
                     [(0.22352409811104385-0.0035102424186296594j),
                      (0.028647452492431665-0.02775008505285708j),
-                     (0.0008920762553460424-0.0008920478601288429j)]]
+                     (0.0008920762553460424-0.0008920478601288429j)],
+                    [(0.21769191+0.07073239j),
+                     (0.86664712+0.28159072j),
+                     (3.45018434+1.12103285j)]]
     input_vals = [0.1, 0.2]
-    inputs = [1, 1, 2, 1, 2, 2]
+    inputs = [1, 1, 2, 1, 2, 2, 2]
     count = 0
     for f in funcs:
         val = f(input_vals[:inputs[count]], freqs)
