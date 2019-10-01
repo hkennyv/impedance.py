@@ -26,6 +26,17 @@ def test_buildCircuit():
         'E([15.0,0.9],[1000.0,5.0,0.01])]),' + \
         'W([1.0,1000.0],[1000.0,5.0,0.01])])'
 
+    # Test modified inductor
+    circuit = 'R_0-p(R_1, E_1/E_2)-M_1/M_2'
+    params = [.1, .01, 15, .9, 1, 1000]
+    frequencies = [1000.0, 5.0, 0.01]
+
+    assert buildCircuit(circuit, frequencies, *params)[0].replace(' ', '') == \
+        's([R([0.1],[1000.0,5.0,0.01]),' + \
+        'p([R([0.01],[1000.0,5.0,0.01]),' + \
+        'E([15.0,0.9],[1000.0,5.0,0.01])]),' + \
+        'M([1.0,1000.0],[1000.0,5.0,0.01])])'
+
     # Test multiple parallel elements
     circuit = 'R_0-p(C_1,R_1,R_2)'
     params = [.1, .01, .2, .3]
